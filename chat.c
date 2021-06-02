@@ -63,7 +63,7 @@ void printChatMessage(DatagramPacket packet, char* senderAddress);
 
 int main(int argc, char ** argv)
 {
-	int pid;
+	int pid, sd, n, len, i;
 	char address[16];
 	int destPort, listenPort;
 	
@@ -119,8 +119,6 @@ int main(int argc, char ** argv)
 	// Father process (Client)
 	if(pid > 0)
 	{
-		int sd, n, len, i;
-	
 		struct sockaddr_in clientAddr, serverAddr;
 		
 		// Client and server address initialization
@@ -180,7 +178,7 @@ int main(int argc, char ** argv)
 	// Children process (Server)
 	if(pid == 0)
 	{
-		int sd, len, i, n_read;
+		int n_read;
 		const int on = -1;
 		
 		struct sockaddr_in clientAddr, serverAddr;
